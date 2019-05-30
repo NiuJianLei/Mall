@@ -8,6 +8,8 @@
         android:minSdkVersion="19"
         android:targetSdkVersion="28" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
@@ -17,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.lenovo.mall.MainActivity" >
+        <activity android:name="com.example.lenovo.mall.ui.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
