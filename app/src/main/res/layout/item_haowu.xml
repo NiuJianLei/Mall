@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_140"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/text"
+        android:text="上新"
+        android:textColor="@color/c_white"
+        />
+    <ImageView
+        android:layout_marginTop="@dimen/dp_30"
+        android:id="@+id/haowu_image"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:scaleType="centerCrop"
+        android:src="@drawable/a5" />
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_160"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/haowu_image"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/dp_20"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="秒杀价格"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/c_red"
+            android:textSize="@dimen/sp_16"
+            android:id="@+id/haowu_price"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="价格"
+            android:textColor="@color/c_black"
+            android:id="@+id/haowu_title"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="介绍"
+            android:id="@+id/haowu_jianjie"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="@dimen/dp_30"
+        android:scaleType="centerCrop"
+        android:src="@drawable/a5"
+        android:id="@+id/miaosha_image"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/u108"
+        android:text="299"
+        android:gravity="center"
+        android:id="@+id/miaosha_dangPrice"
+        android:layout_marginLeft="@dimen/dp_138"
+        android:layout_marginTop="@dimen/dp_8"
+        android:textColor="@color/c_white"
+        />
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_160"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/miaosha_image"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/dp_20"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="秒杀价格"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/c_red"
+            android:textSize="@dimen/sp_16"
+            android:id="@+id/miaosha_price"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="价格"
+            android:textColor="@color/c_black"
+            android:id="@+id/miaosha_title"
+            />
+
+  <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="介绍"
+            android:id="@+id/miaosha_jianjie"
+            />
+
+
+    </LinearLayout>
+</RelativeLayout>

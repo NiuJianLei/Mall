@@ -6,6 +6,9 @@ package com.example.lenovo.mall.net;
 
 
 
+import com.example.lenovo.mall.base.Constants;
+import com.example.lenovo.mall.util.SystemUtil;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

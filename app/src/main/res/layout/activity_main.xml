@@ -1,18 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".ui.activity.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/c_999"
+        android:id="@+id/main_toolbar">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:id="@+id/main_xiaoxi"
+                android:src="@mipmap/xiaoxi" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mall商城"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/sp_18"
+                android:layout_centerHorizontal="true"
+                />
+            <ImageView
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:src="@mipmap/shousuo"
+                android:layout_marginLeft="@dimen/dp_60"
+                android:id="@+id/main_shoucuo"
+                android:layout_toLeftOf="@+id/gouwuche"
+                />
 
-</android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dp_20"
+                android:src="@mipmap/gouwuche"
+                android:id="@+id/gouwuche"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_1"
+    android:layout_below="@+id/main_toolbar"
+    android:background="#999"
+    />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:layout_weight="1"
+        android:id="@+id/main_fram"
+        />
+
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:id="@+id/main_tablayout"
+        app:tabSelectedTextColor="@color/c_2AB795"
+        app:tabIndicatorHeight="@dimen/dp_0"
+        />
+
+
+</LinearLayout>
