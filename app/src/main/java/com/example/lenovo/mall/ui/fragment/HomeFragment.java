@@ -1,8 +1,10 @@
 package com.example.lenovo.mall.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,20 +17,27 @@ import com.example.lenovo.mall.R;
 import com.example.lenovo.mall.base.BaseFragment;
 import com.example.lenovo.mall.bean.BeannerBean;
 import com.example.lenovo.mall.bean.HaoWuBean;
+import com.example.lenovo.mall.bean.LikeBean;
 import com.example.lenovo.mall.bean.MiaoShaBean;
 import com.example.lenovo.mall.bean.PinPaiBean;
+import com.example.lenovo.mall.bean.TuiJIanBean;
 import com.example.lenovo.mall.presenter.HomePresenter;
+import com.example.lenovo.mall.ui.activity.DetailsActivity;
 import com.example.lenovo.mall.ui.adapter.HaoWuRecAdapter;
+import com.example.lenovo.mall.ui.adapter.LikeRecAdapter;
 import com.example.lenovo.mall.ui.adapter.MiaoShaRecAdapter;
 import com.example.lenovo.mall.ui.adapter.PinPaiRecAdapter;
+import com.example.lenovo.mall.ui.adapter.TuiJianRecAdapter;
 import com.example.lenovo.mall.view.HomeView;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implements HomeView {
@@ -50,11 +59,23 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
     TextView miaoshaShengyu;
     @BindView(R.id.haowu_recycler)
     RecyclerView haowuRecycler;
+    @BindView(R.id.tuijian_recycler)
+    RecyclerView tuijianRecycler;
+    Unbinder unbinder;
+    @BindView(R.id.like_recycler)
+    RecyclerView likeRecycler;
+    Unbinder unbinder1;
+    @BindView(R.id.home_details)
+    TextView homeDetails;
+    Unbinder unbinder2;
     private ArrayList<BeannerBean.DlistEntity> bannlist;
     private ArrayList<PinPaiBean.DlistEntity> pinpaiList;
     private PinPaiRecAdapter pinpaiAdapter;
     private MiaoShaRecAdapter miaoshaAdapter;
     private HaoWuRecAdapter haowuAdapter;
+    private TuiJianRecAdapter tuiJianadapter;
+    private View view;
+    private LikeRecAdapter adapter;
 
     @Override
     protected HomePresenter initPresenter() {
@@ -69,7 +90,6 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
     @Override
     protected void initView() {
         bannlist = new ArrayList<>();
-
         //品牌Recycler
         pinpaiRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         pinpaiList = new ArrayList<>();
@@ -83,6 +103,16 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
         haowuRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         haowuAdapter = new HaoWuRecAdapter(getContext());
         haowuRecycler.setAdapter(haowuAdapter);
+        //推荐RecyclerView
+        tuijianRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        tuiJianadapter = new TuiJianRecAdapter(getContext());
+        tuijianRecycler.setAdapter(tuiJianadapter);
+        //猜你喜欢接口
+        likeRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        adapter = new LikeRecAdapter(getContext());
+        likeRecycler.setAdapter(adapter);
+
+
 
     }
 
@@ -92,6 +122,15 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
         mPresenter.initPinPai();
         mPresenter.initMiaosha();
         mPresenter.initHaowu();
+        mPresenter.initTuiJian();
+        mPresenter.initLike();
+        showLoading();
+    }
+
+    @OnClick(R.id.home_details)
+    public void onClick() {
+        Intent intent = new Intent(getContext(), DetailsActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -105,11 +144,12 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
                         Glide.with(context).load(path1.getPic()).into(imageView);
                     }
                 }).start();
+        hideLoading();
     }
 
     @Override
     public void onFain(String msg) {
-
+        hideLoading();
     }
 
     @Override
@@ -127,7 +167,20 @@ public class HomeFragment extends BaseFragment<HomeView, HomePresenter> implemen
 
     @Override
     public void initHaoWu(HaoWuBean haoWuBean) {
-            haowuAdapter.setList((ArrayList<HaoWuBean.ListEntity>) haoWuBean.getList());
+        haowuAdapter.setList((ArrayList<HaoWuBean.ListEntity>) haoWuBean.getList());
     }
+
+    @Override
+    public void initTuiJian(TuiJIanBean tuiJianbean) {
+        List<TuiJIanBean.DlistEntity> dlist = tuiJianbean.getDlist();
+        tuiJianadapter.setList((ArrayList<TuiJIanBean.DlistEntity>) dlist);
+    }
+
+    @Override
+    public void initlike(LikeBean likeBean) {
+        List<LikeBean.DlistEntity> dlist = likeBean.getDlist();
+        adapter.setList((ArrayList<LikeBean.DlistEntity>) dlist);
+    }
+
 
 }

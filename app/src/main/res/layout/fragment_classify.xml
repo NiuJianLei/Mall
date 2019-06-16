@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="分类"
-        />
+        android:layout_height="match_parent">
+        <q.rorbin.verticaltablayout.VerticalTabLayout
+            android:layout_width="@dimen/dp_60"
+            android:id="@+id/vtb"
+            android:layout_height="wrap_content"
+            app:tab_mode="scrollable"
+            app:tab_height="@dimen/dp_50"
+            >
+        </q.rorbin.verticaltablayout.VerticalTabLayout>
+
+        <com.example.lenovo.mall.weigth.VP
+            android:id="@+id/vtbvp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </com.example.lenovo.mall.weigth.VP>
+
+    </LinearLayout>
 
 </LinearLayout>

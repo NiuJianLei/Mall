@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -17,6 +18,7 @@ import com.example.lenovo.mall.ui.fragment.HomeFragment;
 import com.example.lenovo.mall.ui.fragment.MyFragment;
 import com.example.lenovo.mall.ui.fragment.TopicFragment;
 import com.example.lenovo.mall.view.EmptyView;
+import com.jaeger.library.StatusBarUtil;
 
 import java.util.ArrayList;
 
@@ -58,6 +60,9 @@ public class MainActivity extends BaseActivity<EmptyView, EmptyPresenter> {
 
     @Override
     protected void initView() {
+
+        //改变状态栏的字体颜色
+        StatusBarUtil.setLightMode(this);
         //给Tablayout设置Title
         mainTablayout.addTab(mainTablayout.newTab().setText("首页").setIcon(R.drawable.tab_home_selected));
         mainTablayout.addTab(mainTablayout.newTab().setText("分类").setIcon(R.drawable.tab_classify_selected));

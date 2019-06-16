@@ -4,8 +4,10 @@ import com.example.lenovo.mall.base.BaseModel;
 import com.example.lenovo.mall.base.MallApi;
 import com.example.lenovo.mall.bean.BeannerBean;
 import com.example.lenovo.mall.bean.HaoWuBean;
+import com.example.lenovo.mall.bean.LikeBean;
 import com.example.lenovo.mall.bean.MiaoShaBean;
 import com.example.lenovo.mall.bean.PinPaiBean;
+import com.example.lenovo.mall.bean.TuiJIanBean;
 import com.example.lenovo.mall.net.BaseObserver;
 import com.example.lenovo.mall.net.HttpUtils;
 import com.example.lenovo.mall.net.ICallBack;
@@ -105,5 +107,47 @@ public class HomeModel extends BaseModel {
        });
    }
 
+   public void initTuiJian(final ICallBack<TuiJIanBean> iCallBack){
+       MallApi apiserver = HttpUtils.getInstance().getApiserver(MallApi.mallUrl, MallApi.class);
+       apiserver.getTuiJian().compose(RxUtils.<TuiJIanBean>rxObserableSchedulerHelper())
+               .subscribe(new BaseObserver<TuiJIanBean>() {
+                   @Override
+                   public void onError(Throwable e) {
+                       iCallBack.onFain(e.getMessage());
+                   }
+
+                   @Override
+                   public void onSubscribe(Disposable d) {
+                       addDisposable(d);
+                   }
+
+                   @Override
+                   public void onNext(TuiJIanBean tuiJIanBean) {
+                    iCallBack.onSuccess(tuiJIanBean);
+                   }
+               });
+
+   }
+
+   public void initLike(final ICallBack<LikeBean> iCallBack){
+       MallApi apiserver = HttpUtils.getInstance().getApiserver(MallApi.mallUrl, MallApi.class);
+       apiserver.getCaini().compose(RxUtils.<LikeBean>rxObserableSchedulerHelper())
+               .subscribe(new BaseObserver<LikeBean>() {
+                   @Override
+                   public void onError(Throwable e) {
+                       iCallBack.onFain(e.getMessage());
+                   }
+
+                   @Override
+                   public void onSubscribe(Disposable d) {
+                       addDisposable(d);
+                   }
+
+                   @Override
+                   public void onNext(LikeBean likeBean) {
+                    iCallBack.onSuccess(likeBean);
+                   }
+               });
+   }
 
 }
