@@ -1,12 +1,11 @@
 package com.example.lenovo.mall.net;
 
+import android.arch.lifecycle.Observer;
 import android.util.Log;
 
 
 import com.example.lenovo.mall.util.ToastUtil;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 
 /**
  * Created by asus on 2019/3/4.

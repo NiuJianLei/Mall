@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Mall.iml" filepath="$PROJECT_DIR$/Mall.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appbarlayout/appbarlayout.iml" filepath="$PROJECT_DIR$/appbarlayout/appbarlayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/myapplication/myapplication.iml" filepath="$PROJECT_DIR$/myapplication/myapplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qiniu/qiniu.iml" filepath="$PROJECT_DIR$/qiniu/qiniu.iml" />
     </modules>
   </component>
 </project>

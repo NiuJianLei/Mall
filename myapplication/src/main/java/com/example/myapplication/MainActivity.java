@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         //设置默认最小显示大小
                         mSubsamplingScaleImageView.setMinScale(getInitImageScale(resource.getAbsolutePath()));
                         imageCacheFile = resource;
+
                     }
                 });
     }
